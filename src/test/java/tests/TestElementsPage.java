@@ -34,8 +34,6 @@ public class TestElementsPage extends BasePage {
         //test prolazi ali nije dobar jer pokazuje da je tacan i kad je element rasiren
         Assert.assertFalse(elementsPage.elementisShown());
 
-
-        
     }
 
 
@@ -56,6 +54,11 @@ public class TestElementsPage extends BasePage {
         Assert.assertNotEquals(beforeInput, afterInput);
         //proveravam da li je vrednost nakon unosa jednaka onoj koju sam mu poslala
         Assert.assertEquals(afterInput, validUsername);
+    }
+
+    @Test (priority = 30)
+    public void verifyThatUserCanSubmitForm(){
+
     }
 
 }
