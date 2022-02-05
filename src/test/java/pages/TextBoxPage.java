@@ -14,20 +14,29 @@ public class TextBoxPage extends BasePage {
 
     }
 
+    //Full Name placeholder na stranici TextBoxPage
     public @FindBy (id = "userName")
     WebElement fullName;
 
+    //Email placeholder na stranic TextBoxPage
     public @FindBy (id ="userEmail")
     WebElement email;
 
+    //Current Address placeholder na stranici TextBoxPage
     public @FindBy (id = "currentAddress")
     WebElement currentAddress;
 
+    //Permanent  Address placeholder na stranici TextBoxPage
     public @FindBy (id = "permanentAddress")
     WebElement permanentAddress;
 
+    //Submit Button na stranici TextBoxPage
     public @FindBy (id = "submit")
     WebElement submitButton;
+
+    //Output na stranici TextBoxPage
+    public @FindBy (id ="output")
+    WebElement output;
 
     //---------------------------------------
 
@@ -51,7 +60,7 @@ public class TextBoxPage extends BasePage {
 
     public void inputPermanentAddress(String address){
         permanentAddress.clear();
-        permanentAddress.sendKeys();
+        permanentAddress.sendKeys(address);
     }
 
     public void clickOnSubmitButton(){

@@ -25,7 +25,6 @@ public class TestElementsPage extends BasePage {
     //u medjuvremenu sam se setila da stavim jedan test izmedju prvog i drugog
     //cak i da sam napisala ispod testa sa prioritetom 20, ovaj sa 15 bi se izvrsio prvi
     @Test (priority = 15)
-
     public void verifyThatElementsMenuCollapseWhenClickingOnIt() throws InterruptedException {
         //samo da vidim da li radi skupljanje i sirenje elementa Elements
         elementsPage.clickOnElements();
@@ -38,9 +37,7 @@ public class TestElementsPage extends BasePage {
 
 
     @Test (priority = 20)
-
     public void verifyThatUserCanInputTextInFullNamePlaceHolder() {
-
         homePage.clickOnElements();//klikni na element Elements
         elementsPage.clickOnTextBox();//klikni na TextBox
         //dohvatam validUsername iz excela i stavljam ga u promenljivu tipa String
@@ -58,6 +55,22 @@ public class TestElementsPage extends BasePage {
 
     @Test (priority = 30)
     public void verifyThatUserCanSubmitForm(){
+        elementsPage.clickOnTextBox();//klikni na TextBox dugme
+        //Iz excela vucem podatke za unos u formu
+        String validUsername = excelReader.getStringData("Credentials", 1, 2);
+        String validEmail = excelReader.getStringData("Credentials", 2, 2);
+        String validCurrentAddress = excelReader.getStringData("Credentials", 3, 2);
+        String validPermanentAddress = excelReader.getStringData("Credentials", 4, 2);
+        textBoxPage.inputFullName(validUsername);//unesi validno ime
+        textBoxPage.inputEmail(validEmail);//unesi validan email
+        textBoxPage.inputCurrentAddress(validCurrentAddress);//unesi validnu trenutnu adresu
+        scroll(textBoxPage.permanentAddress);//moram da skrolujem da bi mogao da nastavi unos
+        textBoxPage.inputPermanentAddress(validPermanentAddress);//unesi validnu stalnu adresu
+        textBoxPage.clickOnSubmitButton();//klikni na Submit Buton
+
+        //expected rezult prikazan je output unosa
+        Assert.assertTrue(textBoxPage.output.isDisplayed());
+
 
     }
 
