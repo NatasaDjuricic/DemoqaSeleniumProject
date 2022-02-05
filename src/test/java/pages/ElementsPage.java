@@ -28,9 +28,13 @@ public class ElementsPage extends BasePage {
     public @FindBy (css = ".element-list.collapse")
     WebElement elementsCollapsed;
 
-    //dohvatila sam element TextBox iz Elements menija
+    //Text Box Button
     public @FindBy(id = "item-0")
-    WebElement textBox;
+    WebElement textBoxButton;
+
+    //Check Box Button
+    public @FindBy (id = "item-1")
+    WebElement checkBoxButton;
 
 
 //-----------------------------------------------
@@ -57,8 +61,13 @@ public class ElementsPage extends BasePage {
         return false;
     }
 
-    //klikcem na Text Box dugme
+    //klikcem na Text Box button
     public void clickOnTextBox() {
-        textBox.click();
+        textBoxButton.click();
+    }
+
+    //klikcem na Check Box button
+    public void clickOnCheckBox(){
+        checkBoxButton.click();
     }
 }

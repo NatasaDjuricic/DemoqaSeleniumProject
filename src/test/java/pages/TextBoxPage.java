@@ -14,27 +14,27 @@ public class TextBoxPage extends BasePage {
 
     }
 
-    //Full Name placeholder na stranici TextBoxPage
+    //Full Name placeholder na stranici https://demoqa.com/text-box
     public @FindBy (id = "userName")
     WebElement fullName;
 
-    //Email placeholder na stranic TextBoxPage
+    //Email placeholder na stranic https://demoqa.com/text-box
     public @FindBy (id ="userEmail")
     WebElement email;
 
-    //Current Address placeholder na stranici TextBoxPage
+    //Current Address placeholder na stranici https://demoqa.com/text-box
     public @FindBy (id = "currentAddress")
     WebElement currentAddress;
 
-    //Permanent  Address placeholder na stranici TextBoxPage
+    //Permanent  Address placeholder na stranici https://demoqa.com/text-box
     public @FindBy (id = "permanentAddress")
     WebElement permanentAddress;
 
-    //Submit Button na stranici TextBoxPage
+    //Submit Button na stranici https://demoqa.com/text-box
     public @FindBy (id = "submit")
     WebElement submitButton;
 
-    //Output na stranici TextBoxPage
+    //Output na stranici https://demoqa.com/text-box
     public @FindBy (id ="output")
     WebElement output;
 

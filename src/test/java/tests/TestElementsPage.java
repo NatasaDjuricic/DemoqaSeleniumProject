@@ -68,10 +68,16 @@ public class TestElementsPage extends BasePage {
         textBoxPage.inputPermanentAddress(validPermanentAddress);//unesi validnu stalnu adresu
         textBoxPage.clickOnSubmitButton();//klikni na Submit Buton
 
-        //expected rezult prikazan je output unosa
+        //expected rezult ==> prikazan je output unosa
         Assert.assertTrue(textBoxPage.output.isDisplayed());
-
 
     }
 
+    @Test (priority  = 40)
+    public void verifyThatUserCanClickOnHomeButton() {
+        elementsPage.clickOnCheckBox();//klikni na Check Box Button
+
+
+
+    }
 }
