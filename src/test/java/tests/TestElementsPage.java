@@ -54,7 +54,7 @@ public class TestElementsPage extends BasePage {
     }
 
     @Test (priority = 30)
-    public void verifyThatUserCanSubmitForm(){
+    public void verifyThatUserCanSuccessfullySubmitForm(){
         elementsPage.clickOnTextBox();//klikni na TextBox dugme
         //Iz excela vucem podatke za unos u formu
         String validUsername = excelReader.getStringData("Credentials", 1, 2);
