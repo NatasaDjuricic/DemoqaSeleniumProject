@@ -36,6 +36,10 @@ public class ElementsPage extends BasePage {
     public @FindBy (id = "item-1")
     WebElement checkBoxButton;
 
+    //Radio Button
+    public @FindBy(id = "item-2")
+    WebElement radioButton;
+
 
 //-----------------------------------------------
 
@@ -48,6 +52,8 @@ public class ElementsPage extends BasePage {
             }
         }
     }
+
+
 
     //pokusavam ovako da napravim metodu za collapse/expand ali nesto nije dobro
     //test prolazi, ali ne pokazuje dobro
@@ -69,5 +75,10 @@ public class ElementsPage extends BasePage {
     //klikcem na Check Box button
     public void clickOnCheckBox(){
         checkBoxButton.click();
+    }
+
+    public void clickOnRadioButton(){
+        radioButton.click();
+
     }
 }

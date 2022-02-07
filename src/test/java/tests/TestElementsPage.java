@@ -4,6 +4,7 @@ import base.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.RadioButtonPage;
 
 public class TestElementsPage extends BasePage {
     @BeforeMethod
@@ -76,8 +77,20 @@ public class TestElementsPage extends BasePage {
     @Test (priority  = 40)
     public void verifyThatUserCanClickOnHomeButton() {
         //ne klikce mi check box
+        waitClickability(elementsPage.checkBoxButton);
         elementsPage.clickOnCheckBox();//klikni na Check Box Button
 
+
+    }
+
+
+    @Test (priority = 50)
+    public void verifyThatUserCanChooseYesRadioButton(){
+        driver.navigate().to(radioButtonPageURL);//idi na Radio Button Page
+        radioButtonPage.clickOnYesRadioButton();//klikni na "Yes" Radio Button
+
+        //proveravam da li je izasla poruka da je kliknuto na Yes Radio Button
+        Assert.assertTrue(radioButtonPage.yesMessage.isDisplayed());
 
 
     }
