@@ -8,20 +8,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 //pravim trecu stranicu
-public class CheckBoxPage extends BasePage {
-    public CheckBoxPage(WebDriver driver){
+public class RadioButtonPage extends BasePage {
+    public RadioButtonPage(WebDriver driver){
         PageFactory.initElements(driver, this);
 
     }
+    
 
-    // Check Box Button na stranici https://demoqa.com/checkbox
-    public @FindBy (xpath = "//*[@id=\"tree-node\"]/ol/li/span/label/span[1]/svg")
-    WebElement checkboxButton;
 
 
     //---------------------------------------
 
-    public void clickOnCheckBoxButton(){
-        checkboxButton.click();
-    }
+
 }

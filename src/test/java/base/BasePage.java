@@ -17,10 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.CheckBoxPage;
-import pages.ElementsPage;
-import pages.HomePage;
-import pages.TextBoxPage;
+import pages.*;
 import tests.TestHomePage;
 
 import java.io.IOException;
@@ -34,11 +31,15 @@ public class BasePage {
     public ElementsPage elementsPage;
     public TextBoxPage textBoxPage;
     public CheckBoxPage checkBoxPage;
+    public RadioButtonPage radioButtonPage;
+    public WebTablesPage webTablesPage;
     public ExcelReader excelReader;//deklarisem ExcelReader
     public String homeURL;//deklarisem URL koji cu citati iz excela
     public String elementsPageURL;//deklarisem URL za ElementsPage
     public String textBoxPageURL;//deklarisem URL za TextBoxPage
     public String checkBoxPageURL;//deklarisem URL za CheckBoxPge
+    public String radioButtonPageURL;
+    public String webTablesPageURL;
 
     //U ovoj klasi pravim @BeforClass koji ce se pokrenuti pre TestPage-a
     //inicijalizujem drivere, waiter, excelReader, stranice i URL-ove
@@ -53,10 +54,16 @@ public class BasePage {
         elementsPage = new ElementsPage(driver);
         textBoxPage = new TextBoxPage(driver);
         checkBoxPage = new CheckBoxPage(driver);
+        radioButtonPage = new RadioButtonPage(driver);
+        webTablesPage = new WebTablesPage(driver);
         homeURL = excelReader.getStringData("URL", 1, 2);//citam adresu iz Excela
         elementsPageURL = excelReader.getStringData("URL", 2, 2);
         textBoxPageURL = excelReader.getStringData("URL", 3, 2);
         checkBoxPageURL = excelReader.getStringData("URL", 4, 2);
+        radioButtonPageURL = excelReader.getStringData("URL", 5, 2);
+        webTablesPageURL = excelReader.getStringData("URL", 6, 2);
+
+
 
 
     }

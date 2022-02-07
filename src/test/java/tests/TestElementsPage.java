@@ -75,6 +75,7 @@ public class TestElementsPage extends BasePage {
 
     @Test (priority  = 40)
     public void verifyThatUserCanClickOnHomeButton() {
+        //ne klikce mi check box
         elementsPage.clickOnCheckBox();//klikni na Check Box Button
 
 
