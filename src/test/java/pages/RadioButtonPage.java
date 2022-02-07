@@ -18,21 +18,24 @@ public class RadioButtonPage extends BasePage {
 
     //Yes Radio Button na https://demoqa.com/radio-button
     public @FindBy (css = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div:nth-child(1) > div:nth-child(2) > label")
-    List <WebElement> radioButtons;
+    WebElement yesRadioButton;
+
+    public@FindBy (css = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div:nth-child(1) > div:nth-child(3) > label")
+    WebElement impressiveRadioButton;
 
    public @FindBy (css = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div:nth-child(1) > p > span")
-   WebElement yesMessage;
+   WebElement radioButtonMessage;
+
 
     //---------------------------------------
 
     public void clickOnYesRadioButton(){
-            for(int j = 0; j < radioButtons.size(); j++) {
-                if(radioButtons.get(j).getText().equals("Yes")) {
-                    radioButtons.get(j).click();
-                    break;
-                }
-            }
+            yesRadioButton.click();
         }
+
+    public void clickOnImpressiveRadioButton(){
+        impressiveRadioButton.click();
+    }
 
     }
 

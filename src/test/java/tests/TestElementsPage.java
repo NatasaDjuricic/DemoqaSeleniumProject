@@ -89,8 +89,23 @@ public class TestElementsPage extends BasePage {
         driver.navigate().to(radioButtonPageURL);//idi na Radio Button Page
         radioButtonPage.clickOnYesRadioButton();//klikni na "Yes" Radio Button
 
-        //proveravam da li je izasla poruka da je kliknuto na Yes Radio Button
-        Assert.assertTrue(radioButtonPage.yesMessage.isDisplayed());
+        //proveravam da li je izasla poruka u kojoj se nalazi res Yes jer je to jedini deo poruke koji se menja
+        //u skladu sa tim sta sam cekirala
+        Assert.assertEquals(radioButtonPage.radioButtonMessage.getText(), "Yes");
+
+
+    }
+
+    @Test (priority = 60)
+    public void verifyThatWhenClickingOnImpressiveRadioButtonYesRadioButtonIsUnchecked(){
+        driver.navigate().to(radioButtonPageURL);//idi na Radio Button Page
+        radioButtonPage.clickOnYesRadioButton();//klikni na "Yes" Radio Button
+        radioButtonPage.clickOnImpressiveRadioButton();//klikni na Impressive Radio Button
+
+
+        //proveravam da li i dalje postoji poruka da je kliknuto na Yes Radio Button
+        Assert.assertNotEquals(radioButtonPage.radioButtonMessage.getText(), "Yes");
+
 
 
     }
