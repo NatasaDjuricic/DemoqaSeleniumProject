@@ -35,6 +35,7 @@ public class BasePage {
     public RadioButtonPage radioButtonPage;
     public WebTablesPage webTablesPage;
     public ButtonsPage buttonsPage;
+    public LinksPage linksPage;
     public ExcelReader excelReader;//deklarisem ExcelReader
     public String homeURL;//deklarisem URL koji cu citati iz excela
     public String elementsPageURL;//deklarisem URL za ElementsPage
@@ -43,6 +44,7 @@ public class BasePage {
     public String radioButtonPageURL;
     public String webTablesPageURL;
     public String buttonPageURL;
+    public String linksPageURL;
 
 
 
@@ -63,6 +65,7 @@ public class BasePage {
         radioButtonPage = new RadioButtonPage(driver);
         webTablesPage = new WebTablesPage(driver);
         buttonsPage = new ButtonsPage(driver);
+        linksPage = new LinksPage(driver);
         homeURL = excelReader.getStringData("URL", 1, 2);//citam adresu iz Excela
         elementsPageURL = excelReader.getStringData("URL", 2, 2);
         textBoxPageURL = excelReader.getStringData("URL", 3, 2);
@@ -70,6 +73,7 @@ public class BasePage {
         radioButtonPageURL = excelReader.getStringData("URL", 5, 2);
         webTablesPageURL = excelReader.getStringData("URL", 6, 2);
         buttonPageURL = excelReader.getStringData("URL", 7, 2);
+        linksPageURL = excelReader.getStringData("URL", 8, 2);
 
 
 
