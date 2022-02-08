@@ -12,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -33,6 +34,7 @@ public class BasePage {
     public CheckBoxPage checkBoxPage;
     public RadioButtonPage radioButtonPage;
     public WebTablesPage webTablesPage;
+    public ButtonsPage buttonsPage;
     public ExcelReader excelReader;//deklarisem ExcelReader
     public String homeURL;//deklarisem URL koji cu citati iz excela
     public String elementsPageURL;//deklarisem URL za ElementsPage
@@ -40,6 +42,10 @@ public class BasePage {
     public String checkBoxPageURL;//deklarisem URL za CheckBoxPge
     public String radioButtonPageURL;
     public String webTablesPageURL;
+    public String buttonPageURL;
+
+
+
 
     //U ovoj klasi pravim @BeforClass koji ce se pokrenuti pre TestPage-a
     //inicijalizujem drivere, waiter, excelReader, stranice i URL-ove
@@ -56,12 +62,14 @@ public class BasePage {
         checkBoxPage = new CheckBoxPage(driver);
         radioButtonPage = new RadioButtonPage(driver);
         webTablesPage = new WebTablesPage(driver);
+        buttonsPage = new ButtonsPage(driver);
         homeURL = excelReader.getStringData("URL", 1, 2);//citam adresu iz Excela
         elementsPageURL = excelReader.getStringData("URL", 2, 2);
         textBoxPageURL = excelReader.getStringData("URL", 3, 2);
         checkBoxPageURL = excelReader.getStringData("URL", 4, 2);
         radioButtonPageURL = excelReader.getStringData("URL", 5, 2);
         webTablesPageURL = excelReader.getStringData("URL", 6, 2);
+        buttonPageURL = excelReader.getStringData("URL", 7, 2);
 
 
 
@@ -95,6 +103,17 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
+    //za doubleClick
+    public void doubleClick(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.doubleClick(element).perform();
+    }
+
+    //za right click
+    public void rightClick(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.contextClick(element).perform();
+    }
 
 
 

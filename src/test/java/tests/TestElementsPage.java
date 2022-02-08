@@ -1,6 +1,7 @@
 package tests;
 
 import base.BasePage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -91,7 +92,8 @@ public class TestElementsPage extends BasePage {
 
         //proveravam da li je izasla poruka u kojoj se nalazi res Yes jer je to jedini deo poruke koji se menja
         //u skladu sa tim sta sam cekirala
-        Assert.assertEquals(radioButtonPage.radioButtonMessage.getText(), "Yes");
+        String yesRadioButtonText = excelReader.getStringData("Message Text", 2, 2);
+        Assert.assertEquals(radioButtonPage.radioButtonMessage.getText(), yesRadioButtonText);
 
 
     }
@@ -104,9 +106,44 @@ public class TestElementsPage extends BasePage {
 
 
         //proveravam da li i dalje postoji poruka da je kliknuto na Yes Radio Button
-        Assert.assertNotEquals(radioButtonPage.radioButtonMessage.getText(), "Yes");
+        //Kopirala sam ispravne poruke u excel pa ih odatle izvalcim
+        //Ovo radim u slucaju da vise elemenata na vise stranica ima istu poruku pa da menjam poruku u excelu, a ne u kodu
+        String yesRadioButtonText = excelReader.getStringData("Message Text", 2, 2);
+        Assert.assertNotEquals(radioButtonPage.radioButtonMessage.getText(), yesRadioButtonText);
 
+    }
 
+    @Test (priority = 70)
 
+    public void verifyThatClickMeButtonIsActtivatedAfterClickingOnIt(){
+        driver.navigate().to(buttonPageURL);// idi na Buttons Page URL
+        buttonsPage.clickOnClickMeButton();//klikni na Click Me Button
+
+        //proveravam da li je izasla poruka "You have done a dynamic click"
+        String clickMeText = excelReader.getStringData("Message Text", 3, 2);
+        Assert.assertEquals(buttonsPage.clickMeButtonMessage.getText(), clickMeText);
+
+    }
+
+    @Test (priority = 80)
+    public void verifyThatUserMustDoubleClickOnClickMeButtonToActivateIt(){
+        driver.navigate().to(buttonPageURL);//idi na ButtonsPage URL
+
+        //videti kako da napravim assert da se klikne jednom, a da ne izlazi poruka da je uradjen doubleclick
+
+        doubleClick(buttonsPage.doubleClickButton);//uradi double click na Double Click Button
+        //proveri da li se prikazuje poruka da je uradjen double clik
+        String doubleClickMeText = excelReader.getStringData("Message Text", 4, 2);
+        Assert.assertEquals(buttonsPage.doubleClickButtonMessage.getText(), doubleClickMeText);
+    }
+
+    @Test (priority = 90)
+    public void verifyThatUserMustPerformRightClickOnRightClickButtonToActivateIt(){
+        driver.navigate().to(buttonPageURL);//idi na Button Page URL
+        rightClick(buttonsPage.rightClickButton);//uradi desni click na Right Click Button
+
+        //proveri da li se prikazuje poruka da je uradjen double click
+        String rightClickText = excelReader.getStringData("Message Text", 5, 2);
+        Assert.assertEquals(buttonsPage.rightClickMessage.getText(), rightClickText);
     }
 }
