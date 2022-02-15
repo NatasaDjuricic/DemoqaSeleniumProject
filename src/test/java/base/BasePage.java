@@ -24,6 +24,9 @@ import tests.TestHomePage;
 import java.io.IOException;
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
 //U base paketu pravim BasePage
 public class BasePage {
     public WebDriver driver; // deklarisem driver
@@ -94,6 +97,16 @@ public class BasePage {
         wdwait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    //waiter za novi tab
+    public void waitNewTabs(int howManyTabs){
+        wdwait.until(numberOfWindowsToBe(howManyTabs));
+    }
+
+    //waiter dase ucita novi tab
+    public void waitNewTabToLoad(String title){
+        wdwait.until(titleIs(title));
+    }
+
     //mogu da dodam waiter koji mi treba
 
     //metoda da skroluje do elementa u slucaju da se element inicijalno ne vidi
@@ -118,7 +131,6 @@ public class BasePage {
         Actions actions = new Actions(driver);
         actions.contextClick(element).perform();
     }
-
 
 
 

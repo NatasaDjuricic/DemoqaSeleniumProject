@@ -146,4 +146,31 @@ public class TestElementsPage extends BasePage {
         String rightClickText = excelReader.getStringData("Message Text", 5, 2);
         Assert.assertEquals(buttonsPage.rightClickMessage.getText(), rightClickText);
     }
+
+    @Test (priority = 100)
+    public void verifyThatWhenClickingOnHomeLinkNewTabWithHomePageURLOpens() throws InterruptedException {
+        driver.navigate().to(linksPageURL);// idi na Links Page URL
+        String originalWindow = driver.getWindowHandle();//Cuvam ID originalnog tab-a
+        //Check we don't have other windows open already
+        assert driver.getWindowHandles().size() == 1;//proveravam da nemamo jos neki tab otvoren
+        linksPage.clickOnHomeLink();//klikcem na link koji se otvara u novom tabu
+        waitNewTabs(2);//cekam novi Tab
+        //Prolazim kroz petlju dok ne pronadjemo novi window handle i ne prebacimo se na novi tab
+        for (String windowHandle : driver.getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {//ako nadjemo novi window handle
+                driver.switchTo().window(windowHandle);//prebacimo se na novi tab
+                break;
+            }
+        }
+
+        String actualURL = driver.getCurrentUrl();//citamo URL stranixw na kojoj se nalazimo
+        String expectedURL = excelReader.getStringData("URL", 1, 2);//home Page URL
+
+        Assert.assertEquals(actualURL, expectedURL);//uporedi da li je URL trenutne strane isti kao URL Home Page strane
+
+
+
+
+
+    }
 }
