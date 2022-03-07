@@ -148,7 +148,7 @@ public class TestElementsPage extends BasePage {
     }
 
     @Test (priority = 100)
-    public void verifyThatWhenClickingOnHomeLinkNewTabWithHomePageURLOpens() throws InterruptedException {
+    public void verifyThatWhenClickingOnHomeLinkNewTabWithHomePageURLOpens()  {
         driver.navigate().to(linksPageURL);// idi na Links Page URL
         String originalWindow = driver.getWindowHandle();//Cuvam ID originalnog tab-a
         //Check we don't have other windows open already
@@ -163,7 +163,7 @@ public class TestElementsPage extends BasePage {
             }
         }
 
-        String actualURL = driver.getCurrentUrl();//citamo URL stranixw na kojoj se nalazimo
+        String actualURL = driver.getCurrentUrl();//citamo URL stranicw na kojoj se nalazimo
         String expectedURL = excelReader.getStringData("URL", 1, 2);//home Page URL
 
         Assert.assertEquals(actualURL, expectedURL);//uporedi da li je URL trenutne strane isti kao URL Home Page strane

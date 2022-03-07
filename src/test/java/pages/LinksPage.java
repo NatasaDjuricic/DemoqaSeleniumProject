@@ -15,12 +15,21 @@ public class LinksPage {
         public @FindBy (id = "simpleLink")
         WebElement homeLink;
 
+        public @FindBy (id = "created")
+        WebElement NoContentLink;
 
+
+        public @FindBy (id = "linkResponse")
+        WebElement linkMessage;
 
 //--------------------------------------
 
     public void clickOnHomeLink(){
         homeLink.click();
+    }
+
+    public void linkMessageText() {
+        linkMessage.getText();
     }
 
 }
